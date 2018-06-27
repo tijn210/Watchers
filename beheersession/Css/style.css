@@ -1,26 +1,21 @@
 .menu {
-    margin-left: 20%;
-    margin-right: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
     margin-top: 3%;
     height: 800px;
-    border: 1px black solid;
     border-radius: 25px;
     display: flow-root;
 }
 
-.sidebar {
-    margin-left: 0%;
-    margin-right: 85%;
-    margin-top: 0%;
-    margin-bottom: 10%;
-    height: 800px;
-    border: 1px black solid;
-    border-radius: 25px;
-    display: flex;
-
+.divbg {
+    background-color: rgba(2552, 255, 255, 0.8);
 }
 
 .ingriedent-add {
     margin-left: 30%;
-    margin-top: 5%;
+    margin-top: 15%;
+}
+
+h3 {
+    text-align: center;
 }

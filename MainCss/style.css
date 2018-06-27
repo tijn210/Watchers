@@ -3,12 +3,16 @@
     margin-top: 15%;
 }
 
+.divbg {
+    background-color: rgba(2552, 255, 255, 0.8);
+}
+
 .loginlook {
-    width: 400px; border: 1px solid #d6d7da;
+    width: 400px;
+    /*border: 1px solid black;*/
     padding: 15px 0px 15px 30px;
-    border-radius: 5px;font-family: arial;
+    border-radius: 5px;
     line-height: 16px;color: #333333; font-size: 14px;
-    background: #ffffff;
 }
 
 table {

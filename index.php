@@ -25,9 +25,8 @@
             } elseif ($result['id'] == 1337) {
                 header('Location: beheersession/index.php');
             }
-
-            //echo "Correcte Invoer";
         }
+
 //WHEN LOGIN IS INCORRECT
         else {
             echo "Foutieve invoer";
@@ -46,16 +45,16 @@
     <link href="bootstrap/js/bootstrap.min.js" rel="stylesheet">
     <link href="bootstrap/js/bootstrap.bundle.min.js" rel="stylesheet">
 </head>
-<body >
-<div class="loginplace loginlook">
-    <form action="" method="post">
+<body>
+<div class="loginplace loginlook divbg">
+    <form action="#" method="post">
         <table>
             <tr>
                 <!--                <td>login</td>-->
                 <td>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="username" type="text" class="form-control" name="username" placeholder="username">
+                        <input id="username" type="text" class="form-control" name="username" placeholder="username" required="">
                     </div>
                 </td>
             </tr>
@@ -64,7 +63,7 @@
                 <td>
                     <div class="input-group margin">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                        <input id="password" type="password" class="form-control" name="password" placeholder="Password" required="">
                     </div>
                 </td>
             </tr>

@@ -1,21 +1,35 @@
 <?php
 //INCLUDES
-    //include 'Includes/sidebar.php';
+    include '../MainIncludes/header.php';
 
+// SQL strings
+    $sq_ingredients = $pdo->prepare("INSERT INTO `ingredients`(`ingredient`, `hoeveelheid`, `eenheid`) VALUES (:ingredient, :hoeveelheid, :eenheid)");
+
+// If ingredient is submitted
+    if(isset($_POST["add_ingredient"])) {
+        $ingredient = $_POST["ingredient"];
+        $hoeveelheid = $_POST["hoeveelheid"];
+        $eenheid = $_POST["eenheid"];
+
+        $sq_ingredients->bindParam(':ingredient', $ingredient);
+        $sq_ingredients->bindParam(':hoeveelheid', $hoeveelheid);
+        $sq_ingredients->bindParam(':eenheid', $eenheid);
+        $sq_ingredients->execute();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Beheerders</title>
-    <link href="Css/style.css" rel="stylesheet">
+    <title>Weight Watchers</title>
+    <link href="Css/side_menu.css" rel="stylesheet">
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bootstrap/js/bootstrap.min.js" rel="stylesheet">
     <link href="../bootstrap/js/bootstrap.bundle.min.js" rel="stylesheet">
 </head>
 <body>
-<div class="menu">
+<div class="menu divbg">
     <div class="ingriedent-add">
 <!-- ingredient form -->
         <form action="" method="post">
@@ -49,7 +63,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><button type="submit" class="btn btn-primary" name="add">Voeg Toe!</button></td>
+                    <td><button type="submit" class="btn btn-primary" name="add_ingredient">Voeg Toe!</button></td>
                 </tr>
             </table>
         </form>
