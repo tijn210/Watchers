@@ -1,13 +1,15 @@
 <?php
 //INCLUDES
-    include_once 'db.php';
+    include_once '../MainIncludes/db.php';
 //SET SESSION IF LOGGED IN
 session_start();
 
     if(isset($_SESSION['user'])) {
-        header("Location: beheersession/index.php");
+        include 'topbar.php';
     }
-
+    if(!isset($_SESSION['user'])) {
+        header("Location: ../index.php");
+    }
 
 ?>
 <!DOCTYPE html>
@@ -15,7 +17,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Healthy food</title>
-    <link href="../beheersession/Css/style.css" rel="stylesheet">
+    <link href="Css/style.css" rel="stylesheet">
 
 <!--  BOOTSTRAP LINKS, ONLY WORKS WHEN YOU'RE ONLINE  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">

@@ -4,6 +4,7 @@
 
 //INCLUDES
     include_once 'MainIncludes/header.php';
+   // include_once 'MainIncludes/redirect.php';
 
 //SQL SCRIPTS
     $login = $pdo->prepare("SELECT * FROM `user` WHERE Username=? AND password=?");
@@ -19,7 +20,8 @@
 //WHEN LOGIN IS CORRECT
         if($login->rowCount() == 1) {
             $result = $login->fetch();
-            $_SESSION['user'] = array($result['firstname'],$result['lastname'],$result['id']);
+            $_SESSION['user'] = array("firstname" => $result['firstname'], "lastname" => $result['lastname'], "id" => $result['id']);
+
             if($result['id'] == 1) {
                 header('Location: session/index.php');
             } elseif ($result['id'] == 1337) {
@@ -32,6 +34,7 @@
             echo "Foutieve invoer";
         }
     }
+
 ?>
 
 <!DOCTYPE html>

@@ -1,6 +1,6 @@
 <?php
 //INCLUDES
-    include 'Includes/header.php';
+include 'Includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

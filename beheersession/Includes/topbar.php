@@ -8,16 +8,28 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Healthy Food</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="index.php">Home</a>
-            <a class="nav-item nav-link" href="logout.php">Log Out</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">Healthy Food</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                            <a class="nav-item nav-link" href="index.php">Home</a>
+                            <a class="nav-item nav-link" href="add_ingredient.php">Add ingredient</a>
+                            <a class="nav-item nav-link" href="add_dish.php">Add Dish</a>
+                            <a class="nav-item nav-link" href="see_dish.php">See Dish</a>
+            </ul>
+            <ul class="nav-item dropdown navbar-nav">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?= $_SESSION['user']['firstname'] ?>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="settings.php">Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="logout.php">Log off</a>
+                </div>
+            </ul>
         </div>
-    </div>
-</nav>
+    </nav>
 </body>
