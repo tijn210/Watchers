@@ -1,6 +1,4 @@
 <?php
-//INCLUDES
-    include_once 'db.php';
 //SET SESSION IF LOGGED IN
 session_start();
 

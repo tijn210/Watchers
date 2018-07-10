@@ -1,56 +1,47 @@
 <?php
-//SET SESSION IF LOGGED IN
-//    session_start();
-
-//INCLUDES
-    include_once 'MainIncludes/header.php';
-   // include_once 'MainIncludes/redirect.php';
-
-//SQL SCRIPTS
-    $login = $pdo->prepare("SELECT * FROM `user` WHERE Username=? AND password=?");
-
-//LOGIN SCRIPT
-    if(isset($_POST["login"])){
-
-//SQL LOGIN DEFINITION AND EXECUTION
-        $username = $_POST["username"];
-        $passwd = $_POST["password"];
-        $login->execute (array("$username","$passwd"));
-
-//WHEN LOGIN IS CORRECT
-        if($login->rowCount() == 1) {
-            $result = $login->fetch();
-            $_SESSION['user'] = array("firstname" => $result['firstname'], "lastname" => $result['lastname'], "id" => $result['id']);
-
-            if($result['id'] == 1) {
-                header('Location: session/index.php');
-            } elseif ($result['id'] == 1337) {
-                header('Location: beheersession/index.php');
-            }
-        }
-
-//WHEN LOGIN IS INCORRECT
-        else {
-            echo "Foutieve invoer";
-        }
-    }
-
+ include_once 'MainIncludes/header.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weight Watchers</title>
     <link href="MainCss/style.css" rel="stylesheet">
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap/js/bootstrap.min.js" rel="stylesheet">
-    <link href="bootstrap/js/bootstrap.bundle.min.js" rel="stylesheet">
 </head>
 <body>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="loginplace loginlook divbg">
-    <form action="#" method="post">
+    <form action="MainIncludes/actions.php" method="post">
         <table>
             <tr>
                 <!--                <td>login</td>-->
@@ -71,7 +62,9 @@
                 </td>
             </tr>
             <tr>
-                <td><button type="submit" class="btn btn-primary" name="login">Login!</button></td>
+                <td><button type="submit" class="btn btn-primary" name="login">Login!</button>
+                    <button type="submit" class="btn btn-primary" name="register">Registreer!</button>
+                </td>
             </tr>
         </table>
     </form>
