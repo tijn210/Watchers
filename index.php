@@ -11,12 +11,61 @@
 <div class="loginplace loginlook divbg">
     <form action="MainIncludes/actions.php" method="post">
         <table>
+        <?php
+	if(isset($_GET["msg"])) {
+		if($_GET["msg"] == 1) {
+			echo "<tr>";
+				echo "<td>";
+					echo "<div class=\"alert alert-danger\" role=\"alert\">
+                                Login Mislukt!
+                          </div>";
+				echo "</td>";
+			echo "</tr";
+		}
+		if ($_GET["msg"] == 2) {
+            echo "<tr>";
+                echo "<td>";
+                    echo "<div class=\"alert alert-success\" role=\"alert\">
+                              Account Succesvol aangemaakt!
+                          </div>";
+                echo "</td>";
+            echo "</tr";
+		}
+        if ($_GET["msg"] == 3) {
+            echo "<tr>";
+                echo "<td>";
+                    echo "<div class=\"alert alert-success\" role=\"alert\">
+                                  Succesvol uitgelogd!
+                          </div>";
+                echo "</td>";
+            echo "</tr";
+        }
+        if($_GET["msg"] == 4) {
+       		echo "<tr>";
+        		echo "<td>";
+        			echo "<div class=\"alert alert-danger\" role=\"alert\">
+        					Registratie mislukt, probeer opnieuw!
+        				  </div>";
+        		echo "</td>";
+        	echo "</tr";
+        }
+        if($_GET["msg"] == 5) {
+            echo "<tr>";
+                echo "<td>";
+                    echo "<div class=\"alert alert-danger\" role=\"alert\">
+        					E-mailadres bestaat al.
+        				  </div>";
+                echo "</td>";
+            echo "</tr";
+        }
+	}
+?>
             <tr>
                 <!--                <td>login</td>-->
                 <td>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="username" type="text" class="form-control" name="username" placeholder="username" required="">
+                        <input id="username" type="text" class="form-control" name="username" placeholder="Username" required="">
                     </div>
                 </td>
             </tr>
@@ -34,7 +83,7 @@
                     <button type="submit" class="btn btn-primary" name="login">Login!</button>
     </form>
     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#RegisterModal">
                         Registreer!
                     </button>
                 </td>
@@ -42,26 +91,43 @@
         </table>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+<!-- Modal -->
+        <form action="MainIncludes/register.php" method="post">
+            <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Registratie</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-5">
+                                <i class="fa fa-user prefix grey-text"></i>
+                                <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Voornaam" name="firstname">
+                            </div>
+                            <div class="md-form mb-5">
+                            <i class="fa fa-user prefix grey-text"></i>
+                            <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Achternaam" name="lastname">
+                            </div>
+                            <div class="md-form mb-5">
+                                <i class="fa fa-envelope prefix grey-text"></i>
+                                <input type="email" id="orangeForm-email" class="form-control validate" placeholder="E-mail" name="email">
+                            </div>
+
+                            <div class="md-form mb-4">
+                                <i class="fa fa-lock prefix grey-text"></i>
+                                <input type="password" id="orangeForm-pass" class="form-control validate" placeholder="Wachtwoord" name="password">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="submit" name="register" class="btn btn-deep-orange">Registreer!</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        </form>
 </body>
 </html>

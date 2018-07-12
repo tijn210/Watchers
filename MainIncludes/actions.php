@@ -19,22 +19,20 @@ if(isset($_POST["login"])){
 //WHEN LOGIN IS CORRECT
     if($login->rowCount() == 1) {
         $result = $login->fetch();
-        $_SESSION['user'] = array("firstname" => $result['firstname'], "lastname" => $result['lastname'], "id" => $result['id']);
+        $_SESSION['user'] = array("firstname" => $result['firstname'], "lastname" => $result['lastname'], "userid" => $result['userid'], "ID" => $result['ID']);
 
-        if($result['id'] == 1) {
+        if($result['userid'] == 1) {
             header('Location: session/index.php');
-        } elseif ($result['id'] == 1337) {
+        } elseif ($result['userid'] == 1337) {
             header('Location: ../beheersession/index.php');
         }
     }
 
 //WHEN LOGIN IS INCORRECT
     else {
-        echo "Foutieve invoer";
+        header('Location: ../index.php?msg=1');
     }
 }
 
-if(isset($_POST["register"])){
-    echo "Registratie Voltooid!";
-}
+    $pdo = NULL;
 ?>
