@@ -5,7 +5,7 @@
     $lastname = $_POST["lastname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $user_id = 1337;
+    $user_id = 1;
 
     if(isset($_POST["register"])) {
 // DB include

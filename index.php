@@ -1,5 +1,7 @@
 <?php
  include_once 'MainIncludes/header.php';
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +19,7 @@
 			echo "<tr>";
 				echo "<td>";
 					echo "<div class=\"alert alert-danger\" role=\"alert\">
-                                Login Mislukt!
+                                Login mislukt!
                           </div>";
 				echo "</td>";
 			echo "</tr";
@@ -26,7 +28,7 @@
             echo "<tr>";
                 echo "<td>";
                     echo "<div class=\"alert alert-success\" role=\"alert\">
-                              Account Succesvol aangemaakt!
+                              Account succesvol aangemaakt!
                           </div>";
                 echo "</td>";
             echo "</tr";
@@ -105,20 +107,20 @@
                         <div class="modal-body mx-3">
                             <div class="md-form mb-5">
                                 <i class="fa fa-user prefix grey-text"></i>
-                                <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Voornaam" name="firstname">
+                                <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Voornaam" name="firstname" required="">
                             </div>
                             <div class="md-form mb-5">
                             <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Achternaam" name="lastname">
+                            <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Achternaam" name="lastname" required="">
                             </div>
                             <div class="md-form mb-5">
                                 <i class="fa fa-envelope prefix grey-text"></i>
-                                <input type="email" id="orangeForm-email" class="form-control validate" placeholder="E-mail" name="email">
+                                <input type="email" id="orangeForm-email" class="form-control validate" placeholder="E-mail" name="email" required="">
                             </div>
 
                             <div class="md-form mb-4">
                                 <i class="fa fa-lock prefix grey-text"></i>
-                                <input type="password" id="orangeForm-pass" class="form-control validate" placeholder="Wachtwoord" name="password">
+                                <input type="password" id="orangeForm-pass" class="form-control validate" placeholder="Wachtwoord" name="password" required="">
                             </div>
 
                         </div>

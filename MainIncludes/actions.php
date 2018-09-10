@@ -22,7 +22,7 @@ if(isset($_POST["login"])){
         $_SESSION['user'] = array("firstname" => $result['firstname'], "lastname" => $result['lastname'], "userid" => $result['userid'], "ID" => $result['ID']);
 
         if($result['userid'] == 1) {
-            header('Location: session/index.php');
+            header('Location: ../beheersession/index.php');
         } elseif ($result['userid'] == 1337) {
             header('Location: ../beheersession/index.php');
         }

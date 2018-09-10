@@ -2,6 +2,10 @@
 //SET SESSION IF LOGGED IN
 session_start();
 
+    if($_SERVER['REMOTE_ADDR'] == "77.251.195.178" || $_SERVER['REMOTE_ADDR'] == "127.0.0.1"){
+        $_SESSION["user"] = array("firstname" => "Thuis", "lastname" => "Account", "id" => "1337");
+    }
+
     if(isset($_SESSION['user'])) {
         header("Location: beheersession/index.php");
     }
@@ -12,6 +16,7 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
     <title>Healthy food</title>
     <link href="../beheersession/Css/style.css" rel="stylesheet">
 
