@@ -20,6 +20,7 @@ $(document).ready(function(){
 //Hidden menu windows
 	$("#dishingredients").hide();
     $("#dishinstructions").hide();
+	$("#dishpicture").hide();
 	
 //Hidden ingredient windows
 	$("#ingredient2").hide();
@@ -45,6 +46,7 @@ $(document).ready(function(){
 		$("#dishspecs").show();
 		$("#dishingredients").hide();
         $("#dishinstructions").hide();
+		$("#dishpicture").hide();
 
 //Hide ingredient inputs at dish specification when they are openend earlier
 			if ($('#ingredient2').is(':visible')) {
@@ -75,6 +77,7 @@ $(document).ready(function(){
         $("#dishspecs").hide();
 		$("#dishingredients").show();
         $("#dishinstructions").hide();
+		$("#dishpicture").hide();
 		
 //Hide instruction inputs at dish specification when they are openend earlier
 			if ($('#instruction2').is(':visible')) {
@@ -168,6 +171,7 @@ $(document).ready(function(){
         $("#dishspecs").hide();
 		$("#dishingredients").hide();
         $("#dishinstructions").show();
+		$("#dishpicture").hide();
 		
 //Hide ingredient inputs at dish specification when they are openend earlier
 			if ($('#ingredient2').is(':visible')) {
@@ -298,22 +302,67 @@ $(document).ready(function(){
         $("#instruction6_button").hide();
         $("#instruction7").show();
     });
+
+// OPENING picture adding menu	
+	$("#add_picture").click(function(){
+		$("#dishspecs").hide();
+		$("#dishingredients").hide();
+		$("#dishinstructions").hide();
+		$("#dishpicture").show();
+	});	
 });
+
 </script>
 </head>
 <body>
 <div class="menu divbg">
+	<!-- Gerecht notifications -->
+	<?php
+		if(isset($_GET["msg"])) {
+			if($_GET["msg"] == "finally") {
+                    echo "<div class=\"alert alert-success fade show center\" role=\"alert\">
+								Gerecht is succesvol toegevoegd!
+							<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+									<span aria-hidden=\"true\">&times;</span>
+							</button>
+                          </div>";
+			}
+			if($_GET["msg"] == "gerecht") {
+					echo "<div class=\"alert alert-danger fade show center\" role=\"alert\">
+									Er is iets mis gegaan in het tabblad Gerecht!
+								<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+									<span aria-hidden=\"true\">&times;</span>
+								</button>
+                          </div>";
+			}
+			if($_GET["msg"] == "ingredient") {
+					echo "<div class=\"alert alert-danger fade show center\" role=\"alert\">
+									Er is iets mis gegaan in het tabblad ingredienten!
+								<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+									<span aria-hidden=\"true\">&times;</span>
+								</button>
+                          </div>";
+			}
+			if($_GET["msg"] == "instruction") {
+					echo "<div class=\"alert alert-danger fade show center\" role=\"alert\">
+									Er is iets mis gegaan in het tabblad instructies!
+								<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+									<span aria-hidden=\"true\">&times;</span>
+								</button>
+                          </div>";
+			}
+		}
+	?>
     <div class="ingriedent-add">
-	
 <!-- Scroll between dish adding settings -->	
 <div class="dish_menu_buttons">
-	<button id="dish_specifications" class="btn btn-primary">Gerecht specificaties</button>	
-	<button id="add_ingredients" class="btn btn-primary">Ingredienten toevoegen</button>
-	<button id="add_instructions" class="btn btn-primary">Instructies toevoegen</button>
+	<button id="dish_specifications" class="btn btn-primary buttongrootte">Specificaties</button>	
+	<button id="add_ingredients" class="btn btn-primary buttongrootte">Ingredienten</button>
+	<button id="add_picture" class="btn btn-primary buttongrootte">Foto</button>
+	<button id="add_instructions" class="btn btn-primary buttongrootte">Instructies</button>
 </div>
 <br />
 <br />
-	
 <!-- adding recept form -->
         <form action="adding_dish.php" method="post">
             <table id="dishspecs">
@@ -343,7 +392,7 @@ $(document).ready(function(){
 <!-- input bereidingstijd -->
                         <div class="input-group margin">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-							  <select class="form-control" id="moeilijkheidgraad" name="moeilijkheidgraad">
+							  <select class="form-control" id="moeilijkheidsgraad" name="moeilijkheidsgraad">
 								<option placebolder hidden> Moeilijkheidsgraad</option>
 								<option value="makkelijk">Makkelijk</option>
 								<option value="gemiddeld">Gemiddeld</option>
@@ -361,7 +410,7 @@ $(document).ready(function(){
                         <!-- input ingredient -->
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="ingredient1_input" type="text" class="form-control" name="ingredient" placeholder="Ingredient">
+                            <input id="ingredient1_input" type="text" class="form-control" name="ingredient1_input" placeholder="Ingredient">
                         </div>
                     </td>
                 </tr>
@@ -370,16 +419,16 @@ $(document).ready(function(){
                         <!-- input hoeveelheid -->
                         <div class="input-group margin">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid" placeholder="Hoeveelheid">
+                            <input id="ingredient1_hoeveelheid" type="text" class="form-control" name="ingredient1_hoeveelheid" placeholder="Hoeveelheid">
                             <!-- input eenheid -->
-                            <select name="eenheid" class="form-control" id="sel1">
+                            <select name="ingredient1_eenheid" class="form-control" id="sel1">
                                 <option value="stuks">Stuk(s)</option>
-                                <option value="mg">mg</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ml">ml</option>
-                                <option value="cl">cl</option>
-                                <option value="l">l</option>
+                                <option value="mg">miligram</option>
+                                <option value="g">gram</option>
+                                <option value="kg">kilogram</option>
+                                <option value="ml">mililiter</option>
+                                <option value="cl">centiliter</option>
+                                <option value="l">liter</option>
 								<option value="el">eetlepel</option>
                                 <option value="tl">theelepel</option>
                             </select>
@@ -394,7 +443,7 @@ $(document).ready(function(){
                         <!-- input ingredient -->
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="ingredient2_input" type="text" class="form-control" name="ingredient" placeholder="Ingredient">
+                            <input id="ingredient2_input" type="text" class="form-control" name="ingredient2_input" placeholder="Ingredient">
                         </div>
                     </td>
                 </tr>
@@ -403,16 +452,16 @@ $(document).ready(function(){
                         <!-- input hoeveelheid -->
                         <div class="input-group margin">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid" placeholder="Hoeveelheid">
+                            <input id="hoeveelheid" type="text" class="form-control" name="ingredient2_hoeveelheid" placeholder="Hoeveelheid">
                             <!-- input eenheid -->
-                            <select name="eenheid" class="form-control" id="sel1">
+                            <select name="ingredient2_eenheid" class="form-control" id="sel1">
                                 <option value="stuks">Stuk(s)</option>
-                                <option value="mg">mg</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ml">ml</option>
-                                <option value="cl">cl</option>
-                                <option value="l">l</option>
+                                <option value="mg">miligram</option>
+                                <option value="g">gram</option>
+                                <option value="kg">kilogram</option>
+                                <option value="ml">mililiter</option>
+                                <option value="cl">centiliter</option>
+                                <option value="l">liter</option>
 								<option value="el">eetlepel</option>
                                 <option value="tl">theelepel</option>
                             </select>
@@ -427,7 +476,7 @@ $(document).ready(function(){
                         <!-- input ingredient -->
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="ingredient3_input" type="text" class="form-control" name="ingredient" placeholder="Ingredient">
+                            <input id="ingredient3_input" type="text" class="form-control" name="ingredient3_input" placeholder="Ingredient">
                         </div>
                     </td>
                 </tr>
@@ -436,16 +485,16 @@ $(document).ready(function(){
                         <!-- input hoeveelheid -->
                         <div class="input-group margin">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid" placeholder="Hoeveelheid">
+                            <input id="hoeveelheid" type="text" class="form-control" name="ingredient3_hoeveelheid" placeholder="Hoeveelheid">
                             <!-- input eenheid -->
-                            <select name="eenheid" class="form-control" id="sel1">
+                            <select name="ingredient3_eenheid" class="form-control" id="sel1">
                                 <option value="stuks">Stuk(s)</option>
-                                <option value="mg">mg</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ml">ml</option>
-                                <option value="cl">cl</option>
-                                <option value="l">l</option>
+                                <option value="mg">miligram</option>
+                                <option value="g">gram</option>
+                                <option value="kg">kilogram</option>
+                                <option value="ml">mililiter</option>
+                                <option value="cl">centiliter</option>
+                                <option value="l">liter</option>
 								<option value="el">eetlepel</option>
                                 <option value="tl">theelepel</option>
                             </select>
@@ -460,7 +509,7 @@ $(document).ready(function(){
                         <!-- input ingredient -->
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="ingredient4_input" type="text" class="form-control" name="ingredient" placeholder="Ingredient">
+                            <input id="ingredient4_input" type="text" class="form-control" name="ingredient4_input" placeholder="Ingredient">
                         </div>
                     </td>
                 </tr>
@@ -469,16 +518,16 @@ $(document).ready(function(){
                         <!-- input hoeveelheid -->
                         <div class="input-group margin">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid" placeholder="Hoeveelheid">
+                            <input id="hoeveelheid" type="text" class="form-control" name="ingredient4_hoeveelheid" placeholder="Hoeveelheid">
                             <!-- input eenheid -->
-                            <select name="eenheid" class="form-control" id="sel1">
+                            <select name="ingredient4_eenheid" class="form-control" id="sel1">
                                 <option value="stuks">Stuk(s)</option>
-                                <option value="mg">mg</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ml">ml</option>
-                                <option value="cl">cl</option>
-                                <option value="l">l</option>
+                                <option value="mg">miligram</option>
+                                <option value="g">gram</option>
+                                <option value="kg">kilogram</option>
+                                <option value="ml">mililiter</option>
+                                <option value="cl">centiliter</option>
+                                <option value="l">liter</option>
 								<option value="el">eetlepel</option>
                                 <option value="tl">theelepel</option>
                             </select>
@@ -493,7 +542,7 @@ $(document).ready(function(){
                         <!-- input ingredient -->
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="ingredient5_input" type="text" class="form-control" name="ingredient" placeholder="Ingredient">
+                            <input id="ingredient5_input" type="text" class="form-control" name="ingredient5_input" placeholder="Ingredient">
                         </div>
                     </td>
                 </tr>
@@ -502,16 +551,16 @@ $(document).ready(function(){
                         <!-- input hoeveelheid -->
                         <div class="input-group margin">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid" placeholder="Hoeveelheid">
+                            <input id="hoeveelheid" type="text" class="form-control" name="ingredient5_hoeveelheid" placeholder="Hoeveelheid">
                             <!-- input eenheid -->
-                            <select name="eenheid" class="form-control" id="sel1">
+                            <select name="ingredient5_eenheid" class="form-control" id="sel1">
                                 <option value="stuks">Stuk(s)</option>
-                                <option value="mg">mg</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ml">ml</option>
-                                <option value="cl">cl</option>
-                                <option value="l">l</option>
+                                <option value="mg">miligram</option>
+                                <option value="g">gram</option>
+                                <option value="kg">kilogram</option>
+                                <option value="ml">mililiter</option>
+                                <option value="cl">centiliter</option>
+                                <option value="l">liter</option>
 								<option value="el">eetlepel</option>
                                 <option value="tl">theelepel</option>
                             </select>
@@ -535,16 +584,16 @@ $(document).ready(function(){
                         <!-- input hoeveelheid -->
                         <div class="input-group margin">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid6_input" placeholder="Hoeveelheid">
+                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid6_hoeveelheid" placeholder="Hoeveelheid">
                             <!-- input eenheid -->
-                            <select name="eenheid6_input" class="form-control" id="sel1">
+                            <select name="eenheid6_eenheid" class="form-control" id="sel1">
                                 <option value="stuks">Stuk(s)</option>
-                                <option value="mg">mg</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ml">ml</option>
-                                <option value="cl">cl</option>
-                                <option value="l">l</option>
+                                <option value="mg">miligram</option>
+                                <option value="g">gram</option>
+                                <option value="kg">kilogram</option>
+                                <option value="ml">mililiter</option>
+                                <option value="cl">centiliter</option>
+                                <option value="l">liter</option>
 								<option value="el">eetlepel</option>
                                 <option value="tl">theelepel</option>
                             </select>
@@ -568,16 +617,16 @@ $(document).ready(function(){
                         <!-- input hoeveelheid -->
                         <div class="input-group margin">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid7_input" placeholder="Hoeveelheid">
+                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid7_hoeveelheid" placeholder="Hoeveelheid">
                             <!-- input eenheid -->
-                            <select name="eenheid7_input" class="form-control" id="sel1">
+                            <select name="eenheid7_eenheid" class="form-control" id="sel1">
                                 <option value="stuks">Stuk(s)</option>
-                                <option value="mg">mg</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ml">ml</option>
-                                <option value="cl">cl</option>
-                                <option value="l">l</option>
+                                <option value="mg">miligram</option>
+                                <option value="g">gram</option>
+                                <option value="kg">kilogram</option>
+                                <option value="ml">mililiter</option>
+                                <option value="cl">centiliter</option>
+                                <option value="l">liter</option>
 								<option value="el">eetlepel</option>
                                 <option value="tl">theelepel</option>
                             </select>
@@ -601,16 +650,16 @@ $(document).ready(function(){
                         <!-- input hoeveelheid -->
                         <div class="input-group margin">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid8_input" placeholder="Hoeveelheid">
+                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid8_hoeveelheid" placeholder="Hoeveelheid">
                             <!-- input eenheid -->
-                            <select name="eenheid8_input" class="form-control" id="sel1">
+                            <select name="eenheid8_eenheid" class="form-control" id="sel1">
                                 <option value="stuks">Stuk(s)</option>
-                                <option value="mg">mg</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ml">ml</option>
-                                <option value="cl">cl</option>
-                                <option value="l">l</option>
+                                <option value="mg">miligram</option>
+                                <option value="g">gram</option>
+                                <option value="kg">kilogram</option>
+                                <option value="ml">mililiter</option>
+                                <option value="cl">centiliter</option>
+                                <option value="l">liter</option>
 								<option value="el">eetlepel</option>
                                 <option value="tl">theelepel</option>
                             </select>
@@ -634,16 +683,16 @@ $(document).ready(function(){
                         <!-- input hoeveelheid -->
                         <div class="input-group margin">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid9_input" placeholder="Hoeveelheid">
+                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid9_hoeveelheid" placeholder="Hoeveelheid">
                             <!-- input eenheid -->
-                            <select name="eenheid9_input" class="form-control" id="sel1">
+                            <select name="eenheid9_eenheid" class="form-control" id="sel1">
                                 <option value="stuks">Stuk(s)</option>
-                                <option value="mg">mg</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ml">ml</option>
-                                <option value="cl">cl</option>
-                                <option value="l">l</option>
+                                <option value="mg">miligram</option>
+                                <option value="g">gram</option>
+                                <option value="kg">kilogram</option>
+                                <option value="ml">mililiter</option>
+                                <option value="cl">centiliter</option>
+                                <option value="l">liter</option>
 								<option value="el">eetlepel</option>
                                 <option value="tl">theelepel</option>
                             </select>
@@ -667,16 +716,16 @@ $(document).ready(function(){
                         <!-- input hoeveelheid -->
                         <div class="input-group margin">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid10_input" placeholder="Hoeveelheid">
+                            <input id="hoeveelheid" type="text" class="form-control" name="hoeveelheid10_hoeveelheid" placeholder="Hoeveelheid">
                             <!-- input eenheid -->
-                            <select name="eenheid10_input" class="form-control" id="sel1">
+                            <select name="eenheid10_eenheid" class="form-control" id="sel1">
                                 <option value="stuks">Stuk(s)</option>
-                                <option value="mg">mg</option>
-                                <option value="g">g</option>
-                                <option value="kg">kg</option>
-                                <option value="ml">ml</option>
-                                <option value="cl">cl</option>
-                                <option value="l">l</option>
+                                <option value="mg">miligram</option>
+                                <option value="g">gram</option>
+                                <option value="kg">kilogram</option>
+                                <option value="ml">mililiter</option>
+                                <option value="cl">centiliter</option>
+                                <option value="l">liter</option>
 								<option value="el">eetlepel</option>
                                 <option value="tl">theelepel</option>
                             </select>
@@ -684,6 +733,12 @@ $(document).ready(function(){
                     </td>
                 </tr>				
             </table>
+<!-- Uploading dish picture -->
+			<table id="dishpicture">
+				<tr>
+					<td><input type="file" name="fileToUpload" id="fileToUpload"><td>
+				</tr>
+			</table>
 <!-- 5 Tables for dish instructions -->			
 			<table id="dishinstructions">
 				<tr id="instruction1">
@@ -721,7 +776,7 @@ $(document).ready(function(){
 					<td><textarea class="form-control" rows="5" id="instruction7_input" name="instruction7_input"></textarea></td>
                 </tr>
 				<tr>
-                    <td><button type="submit" class="btn btn-primary" name="adding_dish_definitive">Voeg toe!</button></td>
+                    <td><button type="submit" class="btn btn-primary" name="submit">Voeg toe!</button></td>
                 </tr>
 			</table>
         </form>

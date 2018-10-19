@@ -1,3 +1,6 @@
+.buttongrootte {
+	width: 130px;
+}
 
 .divbg {
 	background-color: rgba(2552, 255, 255, 0.8);
@@ -6,6 +9,9 @@ h3 {
 	text-align: center;
 }
 
+.center {
+	text-align: center;
+}
 @media only screen and (max-width: 768px) {
 	.menu {
 		margin-top: 3%;

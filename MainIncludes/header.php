@@ -2,9 +2,9 @@
 //SET SESSION IF LOGGED IN
 session_start();
 
-    if($_SERVER['REMOTE_ADDR'] == "77.251.195.178" || $_SERVER['REMOTE_ADDR'] == "127.0.0.1"){
-        $_SESSION["user"] = array("firstname" => "Thuis", "lastname" => "Account", "id" => "1337");
-    }
+//    if($_SERVER['REMOTE_ADDR'] == "77.251.195.178" || $_SERVER['REMOTE_ADDR'] == "127.0.0.1"){
+//        $_SESSION["user"] = array("firstname" => "Thuis", "lastname" => "Account", "id" => "1337");
+//    }
 
     if(isset($_SESSION['user'])) {
         header("Location: beheersession/index.php");
@@ -15,8 +15,16 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127080488-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-127080488-1');
+</script>
     <meta charset="UTF-8">
-    
     <title>Healthy food</title>
     <link href="../beheersession/Css/style.css" rel="stylesheet">
 
@@ -38,4 +46,7 @@ session_start();
         }
     </style>
 </head>
+<body>
+
+</body>
 </html>
